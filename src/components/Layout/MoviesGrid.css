@@ -1,0 +1,58 @@
+/* Styles extracted from pages/Home/home.css to scope to the MoviesGrid component */
+
+:root{
+  --home-accent:#06b6d4;
+  --home-muted:#9aa4b2;
+}
+
+.home-section{
+  margin-bottom:28px;
+}
+
+.home-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:12px;
+}
+
+.home-grid--small{
+  grid-template-columns:repeat(6,1fr);
+}
+
+/* Loading spinner */
+.home-loading {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 0;
+}
+.spinner {
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:6px solid rgba(255,255,255,0.08);
+  border-top-color: var(--home-accent);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin{
+  to { transform: rotate(360deg); }
+}
+
+.home-error {
+  padding:20px;
+  margin:20px 0;
+  background: rgba(220,50,50,0.06);
+  color: #ffb4b4;
+  border: 1px solid rgba(220,50,50,0.12);
+  border-radius:8px;
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.no-results{
+  /* keep the project's global .no-results in src/index.css, but this rule keeps component fallback styling */
+  padding:8px 0;
+  color:var(--home-muted);
+}

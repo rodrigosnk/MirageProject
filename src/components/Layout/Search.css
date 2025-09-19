@@ -1,0 +1,35 @@
+/* Styles specific to the Search component when using header-like appearance */
+.search--header{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.search--header input{
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    color: #fff;
+    outline: none;
+}
+.search--header input::placeholder{ color: rgba(255,255,255,0.6) }
+.search--header button{
+    background: #06b6d4;
+    border: none;
+    color: #06202a;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* styled-components Button used inside Search; ensure it visually matches header */
+.search--header__btn{
+    background: #06b6d4 !important;
+    color: #06202a !important;
+    padding: 8px 10px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    border: none !important;
+    cursor: pointer !important;
+}

@@ -1,0 +1,68 @@
+:root{
+  --home-bg:#0f1724;
+  --home-card:#0b1220;
+  --home-muted:#9aa4b2;
+  --home-accent:#06b6d4;
+}
+
+.home-page{
+  min-height:100vh;
+  text-align: center;
+}
+
+.home-hero{
+  padding:48px 0;
+  background: linear-gradient(90deg, rgba(6,182,212,0.06), transparent 40%);
+}
+
+.home-hero-inner{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 16px;
+}
+
+.home-hero-title{
+  font-size:2rem;
+  margin:0 0 8px;
+}
+
+.home-hero-subtitle{
+  margin:0 0 16px;
+  color:var(--home-muted);
+}
+
+.home-hero-actions{
+  display:flex;
+  gap:8px;
+}
+
+.home-search-input{
+  flex:1;
+  padding:10px 12px;
+  border-radius:6px;
+  border:1px solid rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.02);
+  color:inherit;
+}
+
+.home-btn{
+  padding:10px 14px;
+  border-radius:6px;
+  border:none;
+  cursor:pointer;
+}
+
+.home-primary{
+  background:var(--home-accent);
+  color:#042027;
+  font-weight:600;
+}
+
+.home-container{
+  max-width:1100px;
+  margin:24px auto;
+  padding:0 16px 48px;
+}
+
+/* Styles for MoviesGrid component were moved to
+   src/components/Layout/MoviesGrid.css */

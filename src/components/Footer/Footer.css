@@ -1,0 +1,47 @@
+.footer{
+    width: 100%;
+    background: linear-gradient(90deg, #0f172a 0%, #0b1220 60%);
+    color: #fff;
+    box-shadow: 0 -6px 18px rgba(2,6,23,0.45);
+    border-top: 1px solid rgba(255,255,255,0.02);
+}
+
+.footer-inner{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.footer .brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer .logo img{
+    width: 56px;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(255,255,255,0.12);
+}
+
+.footer .brand-text{
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+.footer .project-name{ font-weight: 700; color: rgba(255,255,255,0.94) }
+.footer .tagline{ font-size: 12px; color: rgba(255,255,255,0.6) }
+.footer-info{ color: rgba(255,255,255,0.7); font-weight: 600 }
+
+/* Responsive: stack on small screens */
+@media (max-width: 720px){
+    .footer-inner{ flex-direction: column; gap: 12px; text-align: center }
+    .footer-nav{ order: 3 }
+    .footer-info{ order: 4 }
+}
