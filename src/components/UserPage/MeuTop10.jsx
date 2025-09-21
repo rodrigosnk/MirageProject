@@ -311,6 +311,7 @@ const CompactMovieItem = React.memo(function CompactMovieItem({ movie, position,
   const year = (details?.release_date ?? movie.release_date) ? (details?.release_date ?? movie.release_date).split('-')[0] : '';
   const title = details?.title ?? movie.title ?? `Filme #${movie.id}`;
   const rating = details?.vote_average;
+  const id = details?.id ?? movie.id;
 
   const [editing, setEditing] = useState(false);
   const [localValue, setLocalValue] = useState(String(position));
@@ -345,7 +346,8 @@ const CompactMovieItem = React.memo(function CompactMovieItem({ movie, position,
         </CompactPoster>
       )}
       <CompactInfo>
-        <CompactTitle title={title}>{title}</CompactTitle>
+        <Link to={id ? `/busca/${id}` : '#'} aria-label={`Ver detalhes de ${title}`}><CompactTitle title={title}>{title}</CompactTitle></Link>
+        
         <CompactMeta>
           {year && `${year} • `}
           {rating && `⭐ ${parseFloat(rating).toFixed(1)}`}

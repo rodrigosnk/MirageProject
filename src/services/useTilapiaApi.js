@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://tilapiabridge.duckdns.org:3000/api';
+const BASE_URL = 'https://tilapiabridge.duckdns.org:3000/api';
 
 const api = axios.create({ baseURL: BASE_URL });
 
@@ -8,6 +8,8 @@ const api = axios.create({ baseURL: BASE_URL });
 export function setAuthToken(token) {
   if (token) {
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    api.defaults.headers.common['ngrok-skip-browser-warning'] = '0';
+    
     try {
       localStorage.setItem('tilapia_token', token);
     } catch {
@@ -86,6 +88,7 @@ export async function addWatchLater(movieId) {
 
 export async function getWatchLater() {
   const resp = await api.get('/movies/watch-later');
+  console.log(resp);
   return resp.data;
 }
 
