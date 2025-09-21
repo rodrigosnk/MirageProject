@@ -1,30 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.css'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import Search from '../Layout/Search'
+import { getStoredToken, getProfile, setAuthToken } from '../../services/useTilapiaApi'
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [user, setUser] = useState(null);
 
-  // read current q param so navbar input stays in sync across navigation
+  useEffect(() => {
+    let mounted = true;
+    const init = async () => {
+      const token = getStoredToken();
+      if (!token) return;
+      try {
+        const p = await getProfile();
+        if (mounted) setUser(p);
+      } catch {
+        // ignore
+      }
+    }
+    init();
+    const onAuthChanged = () => {
+      init();
+    }
+    window.addEventListener('tilapia-auth-changed', onAuthChanged);
+    return () => { mounted = false; window.removeEventListener('tilapia-auth-changed', onAuthChanged); };
+  }, []);
+
   const params = new URLSearchParams(location.search);
   const currentQ = params.get('q') || '';
 
-  // when user types, navigate to /filmes with updated q param so Filmes page reacts
   const handleChange = (e) => {
     const q = e.target.value || '';
-    // if empty, navigate to /busca without q to clear results
     const target = q ? `/busca?q=${encodeURIComponent(q)}` : `/`;
-    // use replace when staying on same page to avoid polluting history while typing
     navigate(target, { replace: true });
   };
 
-  // on submit (press enter), keep same behavior but ensure we have a q
   const handleSearch = (q) => {
     if (!q) return;
     navigate(`/busca?q=${encodeURIComponent(q)}`);
+  }
+  
+  const reloadPage = () => {
+    window.location.reload();
   }
 
   return (
@@ -39,6 +60,14 @@ const Navbar = () => {
         <nav className={`navbar`}>
           <Link to="/">Home</Link>
           <Link to="/sobre">Sobre</Link>
+          {!user ? (
+            <Link to="/auth">Entrar</Link>
+          ) : (
+            <>
+              <Link to="/user">{user.username || user.email}</Link>
+              <button className="btn link" onClick={() => { setAuthToken(null); setUser(null); reloadPage(); }}>Logout</button>
+            </>
+          )}
         </nav>
 
         <div className="header-actions">

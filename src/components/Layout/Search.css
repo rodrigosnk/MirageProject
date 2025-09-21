@@ -14,22 +14,24 @@
 }
 .search--header input::placeholder{ color: rgba(255,255,255,0.6) }
 .search--header button{
-    background: #06b6d4;
+    background: linear-gradient(90deg,#3b82f6,#7c3aed);
     border: none;
-    color: #06202a;
-    padding: 8px 10px;
-    border-radius: 8px;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 10px;
     font-weight: 700;
     cursor: pointer;
+    transition: transform 140ms ease;
 }
 
 /* styled-components Button used inside Search; ensure it visually matches header */
 .search--header__btn{
-    background: #06b6d4 !important;
-    color: #06202a !important;
-    padding: 8px 10px !important;
-    border-radius: 8px !important;
+    background: linear-gradient(90deg,#3b82f6,#7c3aed) !important;
+    color: #fff !important;
+    padding: 8px 12px !important;
+    border-radius: 10px !important;
     font-weight: 700 !important;
     border: none !important;
     cursor: pointer !important;
 }
+.search--header button:hover{ transform: translateY(-2px); }

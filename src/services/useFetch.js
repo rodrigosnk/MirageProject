@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-// React hook to fetch data with axios and cancellation support.
-// Returns { data, loading, error }.
 export default function useFetch(url, params) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -24,7 +22,7 @@ export default function useFetch(url, params) {
 
         axios
             .get(url, { params: parsedParams, cancelToken: source.token })
-            .then((res) => {
+                .then((res) => {
                 setData(res.data ?? res);
             })
             .catch((err) => {
@@ -39,6 +37,5 @@ export default function useFetch(url, params) {
             source.cancel('Operation canceled by the user.');
         };
     }, [url, paramsString]);
-    console.log(data);
     return { data, loading, error };
 }

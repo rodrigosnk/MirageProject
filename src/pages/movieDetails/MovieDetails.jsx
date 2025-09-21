@@ -2,12 +2,16 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useMovieDetails } from '../../services/useMovieApi';
 import './movieDetails.css';
+import AddMovie from '../../components/Layout/AddMovie';
+
 
 export default function MovieDetails(){
   const { id } = useParams();
   const { data, loading, error } = useMovieDetails(id);
 
-
+    function isLogged(){
+      return Boolean(localStorage.getItem('tilapia_token'));
+    }
 
     function formatRuntime(mins){
       if(mins === null || mins === undefined) return null;
@@ -20,6 +24,11 @@ export default function MovieDetails(){
       if(!videos || !videos.results) return null;
       const trailer = videos.results.find(v => v.site === 'YouTube' && v.type === 'Trailer') || videos.results.find(v => v.site === 'YouTube');
       return trailer || null;
+    }
+    function normalizeDate(dateStr){
+      if(!dateStr) return 'N/A';
+      const date = new Date(dateStr);
+      return date.toLocaleDateString(undefined, { year: 'numeric', month: 'numeric', day: 'numeric' });
     }
   
     if(loading) return <div className="movie-details-loading">Carregando...</div>;
@@ -40,7 +49,7 @@ export default function MovieDetails(){
               {poster ? <img src={poster} alt={data.title} className="movie-details-poster" /> : <div className="movie-details-poster placeholder"/>}
               <div className="movie-details-body">
                 <h1>{data.title} {data.tagline ? <span className="tagline"> — {data.tagline}</span> : null}</h1>
-                <p className="muted">{data.release_date} • {data.status} {runtime ? ` • ${runtime}` : ''}</p>
+                <p className="muted">{normalizeDate(data.release_date)} • {data.status} {runtime ? ` • ${runtime}` : ''}</p>
                 <div className="movie-meta">
                   {data.genres && data.genres.length > 0 && (
                     <div className="genres">
@@ -67,11 +76,12 @@ export default function MovieDetails(){
                 )}
               </div>
             </div>
+           {isLogged() && <AddMovie movie={id} />}
             {trailer && (
                   <div className="trailer">
                     <h3>Trailer</h3>
                     <div className="video-wrap">
-                      <iframe title="trailer" src={`https://www.youtube.com/embed/${trailer.key}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                      <iframe title="trailer" src={`https://www.youtube.com/embed/${trailer.key}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                   </div>
                 )}

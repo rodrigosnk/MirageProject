@@ -16,10 +16,7 @@ export function useFetchPopular(page = 1) {
 }
 
 export function useMovieDetails(id) {
-  // TMDB movie details endpoint uses /movie/{movie_id}
   const url = `${baseURL}/movie/${id}`;
-  // request additional sub-resources (videos for trailers, credits for cast/crew)
-  // `append_to_response` lets TMDB return them in the same payload which simplifies the UI.
   const params = { api_key, language: 'pt-BR', append_to_response: 'videos,credits' };
   return useFetch(url, params);
 }

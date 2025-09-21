@@ -85,13 +85,16 @@
 }
 .header-actions input::placeholder{ color: rgba(255,255,255,0.6) }
 .header-actions button{
-    background: #06b6d4;
+    background: linear-gradient(90deg,#3b82f6,#7c3aed);
     border: none;
-    color: #06202a;
-    padding: 8px 10px;
-    border-radius: 8px;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 10px;
     font-weight: 700;
     cursor: pointer;
+    transition: transform 140ms ease;
 }
+.header-actions button:focus{ outline: 3px solid rgba(124,58,237,0.14); }
+.header-actions button:hover{ transform: translateY(-2px); }
 .header-inner{ padding: 12px 20px }
 .navbar a{ padding: 8px 12px }

@@ -1,27 +1,33 @@
 .movie-card{
-  background:#0b1220;
-  border-radius:8px;
-overflow:hidden;
-  box-shadow:0 2px 8px rgba(2,6,23,0.6);
+  background:linear-gradient(180deg, #071021, #0b1220);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 10px 24px rgba(2,6,23,0.55);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .movie-poster{
   width: 100%;
   object-fit: cover;
   background: #f3f3f3;
+  display:block;
+  transition: transform 220ms ease;
 }
 
 .movie-poster--placeholder{
   width:100%;
-  height:220px;
+  height:260px;
   background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   display:block;
 }
 
 
 .movie-card-body{
-    padding:10px;
+    padding:12px 14px;
   margin-top: 0.5rem;
 }
 
 .movie-muted{color:#9aa4b2}
+
+.movie-card:hover{ transform: translateY(-6px); box-shadow:0 22px 48px rgba(2,6,23,0.6); }
+.movie-card:hover .movie-poster{ transform: scale(1.03); }
