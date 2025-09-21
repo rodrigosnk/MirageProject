@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { getStoredToken, getTop10 as apiGetTop10, removeTop10 as apiRemoveTop10, moveTop10Position } from '../../services/useTilapiaApi';
 import { useMovieDetails } from '../../services/useMovieApi';
 import { toast } from 'sonner';
+import { Link } from 'react-router-dom';
 
 const STORAGE_KEY = 'top_10';
 
