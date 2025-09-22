@@ -4,15 +4,6 @@ import { useMovieDetails } from '../../services/useMovieApi';
 import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
 
-// Generic user list component used by Favorites, WatchLater and MeuTop10
-// Props:
-// - title: string
-// - storageKey: string
-// - apiGet: function -> Promise<array|void>
-// - apiRemove: function(id) -> Promise
-// - allowMove: boolean (shows move controls)
-// - moveApi: function(id, desired) -> Promise
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;

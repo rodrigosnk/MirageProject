@@ -1,6 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './MovieCard.css'
+import styled from 'styled-components';
+
+const Poster = styled.img`
+  width: 250px;
+  height: 370px; 
+  object-fit: cover;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+`;
 
 const MovieCard = ({ id, title, subtitle, className = '' , poster}) => {
 
@@ -10,7 +25,7 @@ const MovieCard = ({ id, title, subtitle, className = '' , poster}) => {
         {poster ? (
           <img src={poster} alt={title} className="movie-poster" />
         ) : (
-          <div className="movie-poster movie-poster--placeholder" aria-hidden="true" />
+          <Poster as="div" style={{display:'flex',alignItems:'center',justifyContent:'center',fontSize:'20px'}}>🎬</Poster>
         )}
         <div className="movie-card-body">
           <h3>{title}</h3>
