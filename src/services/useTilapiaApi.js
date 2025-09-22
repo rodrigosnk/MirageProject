@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://tilapiabridge.duckdns.org:3000/api';
+const BASE_URL = 'https://tilapiabridge.duckdns.org:3000/api';
 
 const api = axios.create({ baseURL: BASE_URL });
 
