@@ -1,28 +1,52 @@
-# React + Vite
+# Mirage Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação em React + Vite que consome a API do TMDB (The Movie Database) para listar filmes, realizar buscas, exibir detalhes e manter listas de favoritos/assistir-depois por usuário.
 
-Currently, two official plugins are available:
+Principais objetivos:
+- Aprender a integrar uma API externa (TMDB) com Axios
+- Criar uma arquitetura de componentes reutilizáveis em React
+- Usar Vite para desenvolvimento rápido e bundling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- Listar filmes populares com paginação
+- Buscar filmes por título (resultados instantâneos)
+- Página de detalhes com informações, imagens e trailer
+- Favoritos e "Assistir depois" por usuário
+- Componentes organizados e reutilizáveis (Navbar, MovieCard, Grid, etc.)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Integrantes
 
-## Como rodar este projeto (rápido)
+- Rodrigo Garcia Alves
+- Lavinia Rocha Brandino Silva
 
-1. Instale dependências:
+## Requisitos
 
-	npm install
+- Node.js (>=16 recomendado)
+- npm ou yarn
 
-2. Rode o servidor de desenvolvimento:
+## Instalação
 
-	npm run dev
+No terminal (Windows PowerShell):
 
-Se você adicionou `prop-types` e não estiver instalado, instale com:
+```powershell
+npm install
+```
+## Scripts úteis
 
-	npm install prop-types
+- npm run dev — inicia o servidor de desenvolvimento (Vite)
+- npm run build — gera a versão de produção
+- npm run lint — executa o ESLint
 
-Implementacao Vercel: https://mirage-project.vercel.app/
+Exemplo para rodar em dev:
+
+```powershell
+npm run dev
+```
+
+## Deploy
+
+O app está publicado em Vercel:
+
+https://mirage-project.vercel.app/
+
