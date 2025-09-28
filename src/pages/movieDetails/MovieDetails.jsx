@@ -26,9 +26,10 @@ export default function MovieDetails(){
       return trailer || null;
     }
     function normalizeDate(dateStr){
+      
       if(!dateStr) return 'N/A';
-      const date = new Date(dateStr);
-      return date.toLocaleDateString(undefined, { year: 'numeric', month: 'numeric', day: 'numeric' });
+      const date = new Date(dateStr + 'T00:00:00');
+      return date.toLocaleDateString();
     }
   
     if(loading) return <div className="movie-details-loading">Carregando...</div>;
