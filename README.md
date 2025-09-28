@@ -24,3 +24,5 @@ If you are developing a production application, we recommend using TypeScript wi
 Se você adicionou `prop-types` e não estiver instalado, instale com:
 
 	npm install prop-types
+
+Implementacao Vercel: https://mirage-project.vercel.app/
