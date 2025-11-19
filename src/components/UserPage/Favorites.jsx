@@ -10,6 +10,7 @@ export default function Favorites() {
       apiGet={apiGetFavorites}
       apiRemove={apiRemoveFavorite}
       emptyText={'Nenhum filme adicionado ainda.\nAdicione filmes para a sua lista de favoritos!'}
+      serverName="favorites"
     />
   );
 }

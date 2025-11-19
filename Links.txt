@@ -1,0 +1,15 @@
+##Github
+
+https://github.com/rodrigosnk/MirageProject.git
+
+##Vercel
+
+https://mirage-project.vercel.app/
+
+##CodeSandbox
+
+https://codesandbox.io/p/github/rodrigosnk/MirageProject/main
+
+##Video
+
+https://unilavrasedu-my.sharepoint.com/:v:/g/personal/www_rodrigogarcia10_sou_unilavras_edu_br/EUYFU6cZ7_xFvF_-qsi24c4B2MM08-Ym5Y0XOBT17uQH3g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uEMeqF

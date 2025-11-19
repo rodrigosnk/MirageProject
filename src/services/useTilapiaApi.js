@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://tilapia-bridge.unity-bot.com/api';
+const BASE_URL = 'https://mirageserver.onrender.com';
 
 const api = axios.create({ baseURL: BASE_URL });
 
@@ -52,8 +52,8 @@ export async function loginApi(email, password) {
   return resp.data;
 }
 
-export async function registerApi(username, email, password) {
-  const resp = await api.post('/auth/register', { username, email, password });
+export async function registerApi(name, email, password) {
+  const resp = await api.post('/auth/register', { name, email, password });
   return resp.data;
 }
 
@@ -109,9 +109,21 @@ export async function removeTop10(movieId) {
   return resp.data;
 }
 
+export async function logout() {
+  const resp = await api.post('/auth/logout');
+  return resp.data;
+}
+
 /* move mandando as inforções no body */
 export function moveTop10Position(movieId, position) {
-  return api.put(`/movies/top-10/position`, { movieId, position });
+ 
+  const resp = api.put(`/movies/top-10/position`, { movieId, position });
+  console.log(resp)
+  return resp;
+}
+
+export async function deletList(listName) {
+  return await api.delete(`/movies/${ listName }`);
 }
 
 export default {
@@ -128,4 +140,7 @@ export default {
   removeWatchLater,
   addTop10,
   getTop10,
+  removeTop10,
+  moveTop10Position,
+  deletList,
 };

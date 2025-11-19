@@ -3,7 +3,7 @@ import './Navbar.css'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import Search from '../Layout/Search'
-import { getStoredToken, getProfile, setAuthToken } from '../../services/useTilapiaApi'
+import { getStoredToken, getProfile, setAuthToken, logout } from '../../services/useTilapiaApi'
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -64,8 +64,8 @@ const Navbar = () => {
             <Link to="/auth">Entrar</Link>
           ) : (
             <>
-              <Link to="/user">{user.username || user.email}</Link>
-              <button className="btn link" onClick={() => { setAuthToken(null); setUser(null); reloadPage(); }}>Logout</button>
+              <Link to="/user">{user.name || user.email}</Link>
+              <button className="btn link" onClick={() => { setAuthToken(null); setUser(null); reloadPage();logout(); }}>Logout</button>
             </>
           )}
         </nav>

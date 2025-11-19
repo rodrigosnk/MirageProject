@@ -10,6 +10,7 @@ export default function WatchLater() {
       apiGet={apiGetWatchLater}
       apiRemove={apiRemoveWatchLater}
       emptyText={'Nenhum filme adicionado ainda.\nAdicione filmes para assistir mais tarde!'}
+      serverName="watch-later"
     />
   );
 }
