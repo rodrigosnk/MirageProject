@@ -45,8 +45,8 @@ const AuthForm = () => {
       } else {
         const res = await loginApi(values.email, values.password);
         console.log('Login response:', res);
-        if (res?.token) {
-          setAuthToken(res.token);
+        if (res?.token.token) {
+          setAuthToken(res.token.token);
         }
         setSuccess(res?.message || 'Login realizado com sucesso!');
         // redirect to user page after successful login

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useMovieDetails } from '../../services/useMovieApi';
 import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
+import { deletList } from '../../services/useTilapiaApi';
 
 const Container = styled.div`
   display: flex;
@@ -107,7 +108,7 @@ function writeStorage(key, list) {
   try { localStorage.setItem(key, JSON.stringify(list)); } catch (err) { console.warn('storage write failed', err); }
 }
 
-export default function UserList({ title, storageKey, apiGet, apiRemove, allowMove = false, moveApi = null, emptyText }) {
+export default function UserList({ title, storageKey, apiGet, apiRemove, allowMove = false, moveApi = null, emptyText , serverName = null}) {
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -156,6 +157,7 @@ export default function UserList({ title, storageKey, apiGet, apiRemove, allowMo
         const res = await apiGet();
         if (Array.isArray(res)) {
           const ids = res.map((r) => (typeof r === 'object' ? r.id : r));
+          console.log(ids);
           const local = readStorage(storageKey);
           const result = ids.map((id) => local.find((m) => m.id === id) || { id, title: `Filme #${id}`, poster_path: null });
           setList(result);
@@ -220,10 +222,41 @@ export default function UserList({ title, storageKey, apiGet, apiRemove, allowMo
     );
   });
 
+  async function resetList() {
+    if (!list || list.length === 0) {
+      toast('Lista já está vazia.');
+      return;
+    }
+    const ok = window.confirm('Tem certeza que deseja resetar a lista? Isso irá apagar todo o seu conteúdo.');
+    if (!ok) return;
+
+    if (deletList) {
+      try {
+        await deletList(serverName);
+        toast.success('Lista resetada com sucesso.');
+      } catch (err) {
+        console.error('Erro ao resetar via API:', err);
+        toast.error('Erro ao tentar resetar a lista no servidor.');
+      }
+    }
+    if (apiGet) {
+        const res = await apiGet();
+        if (Array.isArray(res)) {
+          const ids = res.map((r) => (typeof r === 'object' ? r.id : r));
+          console.log(ids);
+          const local = readStorage(storageKey);
+          const result = ids.map((id) => local.find((m) => m.id === id) || { id, title: `Filme #${id}`, poster_path: null });
+          setList(result);
+          writeStorage(storageKey, result);
+        }
+      }
+  }
+
   return (
     <Container>
       <Header>
         <Title>{title}</Title>
+        <RemoveButton onClick={resetList}>Resetar lista</RemoveButton>
         <Counter>{list.length}</Counter>
       </Header>
       {list.length === 0 ? (

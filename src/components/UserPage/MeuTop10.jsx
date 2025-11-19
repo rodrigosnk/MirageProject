@@ -12,6 +12,7 @@ export default function MeuTop10() {
       allowMove={true}
       moveApi={moveTop10Position}
       emptyText={'Nenhum filme adicionado ainda.\nAdicione filmes para o seu Top 10!'}
+      serverName="top-10"
     />
   );
 }

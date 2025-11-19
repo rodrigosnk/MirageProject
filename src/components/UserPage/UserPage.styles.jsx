@@ -87,6 +87,11 @@ export const ProfileInfo = styled.div`
     margin-bottom: 4px;
     line-height: 1.2;
   }
+    .member-since {
+    color: #9fe4c1ff;
+    font-size: 14px;
+    line-height: 1.3;
+  }
   
   .email {
     color: #9fb0c8;

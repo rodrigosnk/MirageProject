@@ -19,7 +19,9 @@ const User = () => {
         if (!token) throw new Error('Usuário não autenticado');
 
         const p = await getProfile();
+        p.Created_at = new Date(p.Created_at).toLocaleDateString();
         setProfile(p);
+        console.log(p);
       } catch (err) {
         setError(err?.response?.data?.message || err.message || 'Erro ao carregar dados');
       } finally {
@@ -42,10 +44,11 @@ const User = () => {
             <Style.SmallMuted>Área do usuário • gerenciamento de listas</Style.SmallMuted>
           </Style.HeaderInfo>
           <Style.ProfileCard>
-            <Style.Avatar>{profile && (profile.username || profile.name || profile.email || 'U')[0].toUpperCase()}</Style.Avatar>
+            <Style.Avatar>{profile && ( profile.name || profile.email || 'U')[0].toUpperCase()}</Style.Avatar>
             <Style.ProfileInfo>
-              <div className="username">{profile.username || profile.name || profile.email}</div>
+              <div className="username">{profile.name || profile.email}</div>
               <div className="email">{profile.email}</div>
+              <div className="member-since">{"membro desde: " + profile.Created_at}</div>
             </Style.ProfileInfo>
           </Style.ProfileCard>
         </Style.Header>
