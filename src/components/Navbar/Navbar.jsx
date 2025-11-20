@@ -65,7 +65,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/user">{user.name || user.email}</Link>
-              <button className="btn link" onClick={() => { setAuthToken(null); setUser(null); reloadPage();logout(); }}>Logout</button>
+              <button className="btn link" onClick={() => { logout();setAuthToken(null); setUser(null); reloadPage(); }}>Logout</button>
             </>
           )}
         </nav>
